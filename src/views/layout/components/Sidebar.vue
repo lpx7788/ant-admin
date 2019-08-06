@@ -56,10 +56,6 @@
             ])
         },
         created(){
-            console.log(this.permission_routers);
-            this.permission_routers.forEach(function(item,index){
-              console.log(item)
-            })
         }
     }
 </script>

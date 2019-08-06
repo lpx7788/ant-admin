@@ -1,13 +1,11 @@
 <template>
 	<div class="top">
-		<el-breadcrumb class="app-levelbar" separator="/">
-			<el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path">
-				<!-- <router-link v-if='item.redirect==="noredirect"||index==levelList.length-1' to="" class="no-redirect">{{item.name}}</router-link>
-				<router-link v-else :to="item.redirect||item.path">{{item.name}}</router-link> -->
+		<a-breadcrumb class="app-levelbar" separator="/">
+			<a-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path">
                 <span v-if='item.redirect==="noredirect"||index==levelList.length-1'>{{item.name}}</span>
                 <span v-else >{{item.name}}</span>
-			</el-breadcrumb-item>
-		</el-breadcrumb>
+			</a-breadcrumb-item>
+		</a-breadcrumb>
 		
 	</div>
 </template>

@@ -1,20 +1,6 @@
 <template>
-  <el-menu class="navbar" mode="horizontal" style="background:fff;font0size:13px;">
-    <!-- <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger> -->
-    <!-- <levelbar></levelbar> -->
+  <a-menu class="navbar" mode="horizontal" style="background:fff;font0size:13px;">
     <div class="avatar-container">
-
-        <!-- 企业入驻消息.start -->
-        <!-- <el-popover ref="message" placement="bottom" popper-class="nopad msg-container" width="360" trigger="click">
-            <w-message :order-msg="orderMsg"></w-message>
-        </el-popover>
-        <div v-popover:message class="flex-center bd-l pd5">
-            <el-badge :value="msgCount" :max="99" class="item">
-                <i class="el-icon-message"></i>
-            </el-badge>
-        </div> -->
-        <!-- 企业入驻信息.end -->
-
         <span class="el-dropdown-link">
             用户 : <span>{{loginName}}</span>
         </span>
@@ -25,19 +11,16 @@
             </el-dropdown-menu>
         </el-dropdown>
     </div>
-  </el-menu>
+  </a-menu>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-// import Levelbar from "./Levelbar";
 import Hamburger from "@/components/Hamburger";
-
 import { mapState, mapActions } from 'vuex'
 import Socket from '@/utils/plugin/socket'
 import $bus from '@/utils/global-bus'
 import iData from '@/utils/iData'
-// import Message from '@/components/Message/Message'
 import { getToken } from '@/utils/auth';
 
 let socketService;
@@ -53,37 +36,27 @@ export default {
         };
     },
     components: {
-        // Levelbar,
         Hamburger,
-        // 'w-message': Message
     },
     computed: {
         ...mapGetters(["sidebar"]),
 
-        // 企业入驻统计
-        msgCount() {
-        if(this.orderMsg )
-            return this.orderMsg.count
-        else 
-            return 0
-        }
+
     },
     methods: {
-        // toggleSideBar() {
-        // this.$store.dispatch("ToggleSideBar");
-        // },
+  
         logout() {
             // 操作审计
         this.$store.dispatch("LogOut").then(() => {
             location.reload(); // 为了重新实例化vue-router对象 避免bug
         });
         },
-        ///////////////////////////企业入驻信息///////////////////////////////////////////////////////////
+
         // 监听工作台信息
         listenService() {
             $bus.$on('recive:getInfoCount', data => {
                 let msgs = data.returnObject
-                this.orderMsg = msgs.find(msg => msg.type === 'orderMsg')
+               
             })
             // 全局消息提示
             $bus.$on('recive:receiveMessage', async data => {
@@ -116,46 +89,6 @@ export default {
         },
 
     },
-    /* async mounted() {
-        socketService = new Socket(this.projectConfig.AIO_WEBSOCKET_SERVICE_URL, null, {
-            debug: true,
-            automaticOpen: false,
-            maxReconnectAttempts: 10000
-        })
-        // 监听数据
-        this.listenService();
-        socketService.open();
-        socketService.onopen = () => {
-            $bus.$emit('service:send', {
-            action: 'getInfoCount'
-            })
-        };
-        
-
-        socketService.onmessage = ({data: originData}) => {
-            try {
-            let data = JSON.parse(originData)
-            $bus.$emit(`recive:${data.type}`, data)
-            } catch (error) {
-            // console.warn(error)
-            this.$notify({
-                title: '警告',
-                message: 'Socket 消息解析错误，请联系网站管理员',
-                type: 'warning'
-            })
-            }
-        }
-        $bus.$on('service:send', data => {
-            let access_token = getToken();
-            socketService.send(JSON.stringify(Object.assign(data, {access_token})))
-        })
-        
-
-    },
-    beforeDestroy() {
-        socketService.close()
-        $bus.$off()
-    }, */
 };
 </script>
 
@@ -175,16 +108,7 @@ export default {
     padding-left: 14px;
     background-size: 12px 12px;
   }
-  .el-dropdown {
-    font-size: 13px;
-    cursor: pointer;
-  }
-  .el-dropdown-link {
-    margin-left: 20px;
-  }
-  .el-dropdown-link i {
-    color: #999;
-  }
+
   .tuichu .el-dropdown-link:hover {
     cursor: pointer;
   }

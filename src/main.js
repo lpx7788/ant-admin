@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import ElementUI from 'element-ui'
+// import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -33,10 +33,10 @@ import 'viewerjs/dist/viewer.css'
 Vue.use(Viewer) 
 
 // 基于elementUI的多选级联选择器
-import EleMultiCascader from "ele-multi-cascader";
+// import EleMultiCascader from "ele-multi-cascader";
 // import "https://github.com/webCoderJ/ele-multi-cascader/blob/master/dist/cascader.css";
-import '../src/styles/cascader.css'
-Vue.use(EleMultiCascader)
+// import '../src/styles/cascader.css'
+// Vue.use(EleMultiCascader)
 
 // 引用httclient全部变量
 import { httpClient } from '@/utils/httpClient';
@@ -56,7 +56,7 @@ import  './assets/aliicon/iconfont.css'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI,{size:'small'})
+// Vue.use(ElementUI,{size:'small'})
 Vue.component('icon-svg', IconSvg)
 
 /* 全局路由控制钩子.start */
