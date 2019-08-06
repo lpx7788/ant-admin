@@ -59,29 +59,15 @@ export default {
 		top:-2px;
 		width: 152px;
 		margin-left: 20px;
-		.el-input__inner{
-			text-align: center;
-		}
+
 	}
-		
-	.el-input__icon+.el-input__inner {
-		height: 30px;
-	}
-    .el-input{
-		font-size:13px;
-	}
-	.el-input__inner {
-		border: 0;
-		background: none;
-	}
+
 	.all-space {
 		position: absolute;
 		top:-2px;
 		width: 152px;
 		margin-left:170px;
-		.el-input__inner{
-			text-align: center;
-		}
+	
 	}
 	.popper__arrow{
 		left:66px;

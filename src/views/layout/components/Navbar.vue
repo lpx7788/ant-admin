@@ -1,17 +1,20 @@
 <template>
-  <a-menu class="navbar" mode="horizontal" style="background:fff;font0size:13px;">
-    <div class="avatar-container">
-        <span class="el-dropdown-link">
+
+     <a-dropdown class="avatar-container">
+       <span >
             用户 : <span>{{loginName}}</span>
-        </span>
-        <el-dropdown trigger="click">
-            <span class="el-dropdown-link">注销登陆<i class="el-icon-arrow-down el-icon--right"></i></span>
-            <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item><span @click="logout" style="display:block;">退出</span></el-dropdown-item>
-            </el-dropdown-menu>
-        </el-dropdown>
-    </div>
-  </a-menu>
+            <span class="ant-dropdown-link loginOut">注销登陆<a-icon type="down" /></span>
+        </span> 
+    
+
+    <a-menu slot="overlay"  class="navbar" style="background:fff;font-size:13px;">
+      <a-menu-item>
+        <span @click="logout" >退出</span>
+      </a-menu-item>
+      
+    </a-menu>
+  </a-dropdown>
+
 </template>
 
 <script>
@@ -39,24 +42,29 @@ export default {
         Hamburger,
     },
     computed: {
-        ...mapGetters(["sidebar"]),
+        // ...mapGetters(["sidebar"]),
 
-
+        // 企业入驻统计
+        msgCount() {
+        if(this.orderMsg )
+            return this.orderMsg.count
+        else 
+            return 0
+        }
     },
     methods: {
-  
+
         logout() {
-            // 操作审计
+
         this.$store.dispatch("LogOut").then(() => {
             location.reload(); // 为了重新实例化vue-router对象 避免bug
         });
         },
-
-        // 监听工作台信息
+    
         listenService() {
             $bus.$on('recive:getInfoCount', data => {
                 let msgs = data.returnObject
-               
+                this.orderMsg = msgs.find(msg => msg.type === 'orderMsg')
             })
             // 全局消息提示
             $bus.$on('recive:receiveMessage', async data => {
@@ -93,37 +101,10 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.navbar {
-
-  border-radius: 0px !important;
-  border-bottom:1px solid #eaeaea;
-  box-shadow: 1px 0px 4px #efeeee;
-  .hamburger-container {
-    height: 52px;
-    float: left;
-    padding: 0 10px;
-  }
-  .help-center{
-    background: url(../../../assets/images/help.png) no-repeat left center;
-    padding-left: 14px;
-    background-size: 12px 12px;
-  }
-
-  .tuichu .el-dropdown-link:hover {
-    cursor: pointer;
-  }
-  .errLog-container {
-    display: inline-block;
-    position: absolute;
-    right: 150px;
-  }
-  .screenfull {
-    position: absolute;
-    right: 90px;
-    top: 16px;
-    color: red;
-  }
-  .avatar-container {
+.loginOut{
+  margin-left: 20px;
+}
+ .avatar-container {
     display: inline-block;
     position: fixed;
     top: 0;
@@ -139,7 +120,7 @@ export default {
         height: 40px;
         border-radius: 10px;
       }
-      .el-icon-caret-bottom {
+      .a-icon-caret-bottom {
         position: absolute;
         right: -20px;
         top: 25px;
@@ -147,7 +128,5 @@ export default {
       }
     }
   }
-}
-
 
 </style>

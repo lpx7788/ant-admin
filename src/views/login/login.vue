@@ -6,25 +6,27 @@
          <h3 class="title">欢迎登录聚点商城运营后台</h3>
         <div class="picIcon"></div>
         <div class="loginRight">
-            <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
-                <el-form-item prop="userPhone">
+            <a-form autoComplete="on"  :form="form" :rules="loginRules" ref="loginForm" laba-position="left" laba-width="0px" class="card-box login-form">
+                <a-form-item prop="userPhone">
                     <span class="svg-container">
-                    <icon-svg icon-class="xinrenzhinan"></icon-svg>
+                        <!-- <a-icon type="aliwangwang" /> -->
+                    <!-- <icon-svg icon-class="xinrenzhinan"></icon-svg> -->
                     </span>
-                    <el-input name="userPhone" type="text" v-model="loginForm.userPhone" ref="userPhone" autoComplete="on" placeholder="手机号码"></el-input>
-                </el-form-item>
-                <el-form-item prop="userPassword">
+                    <a-input name="userPhone" type="text" v-model="loginForm.userPhone" ref="userPhone" autoComplete="on" placeholder="手机号码"></a-input>
+                </a-form-item>
+                <a-form-item prop="userPassword">
                     <span class="svg-container">
-                    <icon-svg icon-class="mima"></icon-svg>
+                        <!-- <a-icon type="aliwangwang" /> -->
+                    <!-- <icon-svg icon-class="mima"></icon-svg> -->
                     </span>
-                    <el-input name="userPassword" type="password" @keyup.enter.native="handleLogin" v-model="loginForm.userPassword" autoComplete="on" placeholder="密码"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+                    <a-input name="userPassword" type="password" @keyup.enter.native="handleLogin" v-model="loginForm.userPassword" autoComplete="on" placeholder="密码"></a-input>
+                </a-form-item>
+                <a-form-item>
+                    <a-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
                     登录
-                    </el-button>
-                </el-form-item>
-            </el-form>
+                    </a-button>
+                </a-form-item>
+            </a-form>
 
 
 
@@ -70,6 +72,7 @@
                 }
             };
             return {
+                form: this.$form.createForm(this),
                 loginForm: {
                     userPhone: '',
                     userPassword: '',
@@ -92,19 +95,13 @@
         },
         methods: {
             handleLogin() {
-                this.$refs.loginForm.validate(valid => {
-                    if (valid) {
-                        // 点击,登录按钮,验证通过,请求登录
-                        // 这里是用vuex的dispatch,触发Login action,
-                        // /src/store/modules/user.js 这个文件配置了action的动作,以及登录成功后存储token
-                        this.loading = true;
+        
+                this.form.validateFields((error, values) => {
 
-                        // 15989231237
-                        // 13610368174
-                        // 18310808142
-                        // 18126823343
-
-                        if (this.loginForm.userPhone != (process.env.ENV_NAME=='prod'?'18126823343':'18310808142')) {
+                    console.log(1111)
+                    console.log('error', error);
+                    console.log('Received values of form: ', values);
+                   if (this.loginForm.userPhone != (process.env.ENV_NAME=='prod'?'18126823343':'18310808142')) {
                             this.$notify.error(
                                 '账号错误'
                             )
@@ -127,10 +124,9 @@
                         }).catch(() => {
                             this.loading = false;
                         });
-                    } else {
-                        return false;
-                    }
+                         
                 });
+
             }
         }
     }
@@ -178,7 +174,7 @@
             right: 2%;
             top:1px;
         }
-        .el-icon-message:before{
+        .a-icon-message:before{
             margin-right:6px;
         }
         .header span {
@@ -207,7 +203,8 @@
             margin-top: 140px;
         }
         input {
-            border: 0px;
+            border-color: #fff4f4;
+            border-width: 0.5px;
             -webkit-appearance: none;
             border-radius: 0px;
             color: #999;
@@ -221,15 +218,7 @@
             background-image: none;
             color:#fff;
         }
-        .el-input {
-            display: inline-block;
-            height: 47px !important;
-            line-height: 47px !important;
-            padding-left:42px;
-            border-radius: 4px;
-            text-align:right;
-            box-sizing:border-box;
-        }
+
         .svg-container {
             padding: 6px 5px 6px 15px;
             color: #fff;
@@ -259,23 +248,13 @@
             margin-top: 178px;
             background-color:#ffffff29;
         }
-        .el-form-item {
+        .a-form-item {
            // border: 1px solid #ccc;
             border-radius:2px;
             color: #fff;
             background:#ffffff29;
         }
         .forget-pwd {
-            color: #fff;
-        }
-        .el-button--primary {
-            background: #0ba2d3;
-            color: #fff;
-            height:40px;
-        }
-        .el-button--primary:hover {
-            background: #20a0ff;
-            border: 1px solid #20a0ff;
             color: #fff;
         }
     }
@@ -294,10 +273,7 @@
         font-size: 14px;
     }
 
-    .login{
 
-        .el-form-item {
-            margin-bottom: 22px !important;
-        }
-    }
+
+
 </style>

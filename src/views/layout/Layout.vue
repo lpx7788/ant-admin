@@ -15,7 +15,7 @@
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
           @click="()=> collapsed = !collapsed"
         />
-        <!-- <navbar></navbar> -->
+        <navbar></navbar>
       </a-layout-header>
 
     <!-- 主体部分 -->
