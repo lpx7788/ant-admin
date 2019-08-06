@@ -1,19 +1,13 @@
 <template>
-  <!-- <a-layout class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-        <div class="sidebar-wrapper">
-            <sidebar class="sidebar-container"></sidebar>
-        </div>
-        <div class="main-container">
-            <navbar></navbar>
-            <app-main></app-main>
-        </div>
-  </a-layout>-->
   <a-layout class="components-layout-demo-custom-trigger" style="height: 100% !important;">
+    <!-- 侧边导航 -->
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
       <div class="sidebar-wrapper">
         <sidebar class="sidebar-container"></sidebar>
       </div>
     </a-layout-sider>
+
+  <!-- 顶部导航 -->
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
         <a-icon
@@ -23,6 +17,8 @@
         />
         <navbar></navbar>
       </a-layout-header>
+
+    <!-- 主体部分 -->
       <a-layout-content
         :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
       >
@@ -33,7 +29,10 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from "@/views/layout";
+import  Navbar from "@/views/layout/components/Navbar";
+import  Sidebar from "@/views/layout/components/Sidebar";
+import  AppMain from "@/views/layout/components/AppMain";
+
 
 export default {
   name: "layout",

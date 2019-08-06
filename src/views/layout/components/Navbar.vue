@@ -171,7 +171,7 @@ export default {
     padding: 0 10px;
   }
   .help-center{
-    background: url(../../assets/images/help.png) no-repeat left center;
+    background: url(../../../assets/images/help.png) no-repeat left center;
     padding-left: 14px;
     background-size: 12px 12px;
   }
