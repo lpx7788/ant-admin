@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/less" lang="less">
 .app-levelbar.el-breadcrumb {
 	display: inline-block;
 	font-size: 13px;

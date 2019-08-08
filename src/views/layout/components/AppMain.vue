@@ -1,6 +1,6 @@
 <template>
-    <section class="app-main">
-        <transition-group name="fade" mode="out-in">
+    <section >
+        <transition-group name="fade" class="app-main" mode="out-in">
             <Levelbar :key="key"></Levelbar>
             <router-view :key="key"></router-view>
         </transition-group>
@@ -23,3 +23,12 @@
       }
     }
 </script>
+<style rel="stylesheet/less" lang="less" scoped>
+      .app-main{
+       display: block;
+       margin: 24px 16px;
+       padding: 24px;
+       background: #fff;
+       
+    }
+</style>

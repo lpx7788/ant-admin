@@ -132,8 +132,8 @@
     }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-    @import "src/styles/mixin.scss";
+<style lang="less" >
+
     .tips {
         font-size: 14px;
         color: #999;
@@ -141,7 +141,7 @@
     }
 
     .login-container {
-        @include relative;
+       
         height: 100vh;
         background: url(../../assets/images/login-bg03.png) 50% 50%/cover no-repeat fixed;
         background-size: 100% 100%;

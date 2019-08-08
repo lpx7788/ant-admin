@@ -37,7 +37,7 @@
  }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/less" lang="less" scoped>
 .wscn-http404 {
   position: relative;
   width: 1200px;

@@ -100,13 +100,13 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/less" lang="less" scoped>
 .loginOut{
   margin-left: 20px;
 }
  .avatar-container {
     display: inline-block;
-    position: fixed;
+    position: absolute;
     top: 0;
     color: #5a5e66;
     right: 28px;

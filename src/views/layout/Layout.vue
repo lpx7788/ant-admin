@@ -20,7 +20,7 @@
 
     <!-- 主体部分 -->
       <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        
       >
         <app-main></app-main>
       </a-layout-content>
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/less" lang="less" scoped>
 
 .components-layout-demo-custom-trigger .trigger {
     font-size: 18px;

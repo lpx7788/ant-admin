@@ -56,7 +56,8 @@ import  './assets/aliicon/iconfont.css'
 
 Vue.config.productionTip = false
 
-// Vue.use(ElementUI,{size:'small'})
+
+
 Vue.component('icon-svg', IconSvg)
 
 /* 全局路由控制钩子.start */
