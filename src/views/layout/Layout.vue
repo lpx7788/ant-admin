@@ -10,12 +10,14 @@
   <!-- 顶部导航 -->
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon
-          class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="()=> collapsed = !collapsed"
-        />
-        <navbar></navbar>
+         <div class="header-wrapper">
+             <a-icon
+              class="trigger"
+              :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+              @click="()=> collapsed = !collapsed"
+            />
+            <navbar></navbar>
+         </div>
       </a-layout-header>
 
     <!-- 主体部分 -->
@@ -56,13 +58,15 @@ export default {
 
 <style rel="stylesheet/less" lang="less" scoped>
 
-.components-layout-demo-custom-trigger .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    
-    cursor: pointer;
-    transition: color 0.3s;
+.components-layout-demo-custom-trigger {
+   .trigger{
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+   }
+
     .trigger:hover {
     color: #1890ff;
     }
@@ -70,6 +74,15 @@ export default {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
+    }
+    .header-wrapper{
+      height: 64px !important;
+      width: 100%;
+      position: fixed !important;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+      box-shadow: 0 0 5px #d9d8d8;
     }
 
 }

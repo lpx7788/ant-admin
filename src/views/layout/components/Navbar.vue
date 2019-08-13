@@ -106,7 +106,7 @@ export default {
 }
  .avatar-container {
     display: inline-block;
-    position: absolute;
+    position: fixed;
     top: 0;
     color: #5a5e66;
     right: 28px;

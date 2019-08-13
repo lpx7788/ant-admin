@@ -7,6 +7,7 @@
           <h1 >聚点商城</h1>
         </a>
       </div>
+      <!-- :defaultSelectedKeys="['/home']"  -->
      <a-menu  mode="inline" theme="dark" :inlineCollapsed="collapsed">
         <template v-for="item in permission_routers">
         <a-menu-item v-if="!item.hidden&&item.noDropdown&&item.children&&item.children.length>0"  :key="item.path">
